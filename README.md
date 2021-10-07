@@ -1,6 +1,6 @@
 # LSTM-3char_to_1char
 
-## A string summary of the network.
+## Summary of the network.
 
 Define an LSTM network with 32 units and an output layer with a softmax activation function for making predictions.
 
