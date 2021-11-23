@@ -12,7 +12,11 @@ The model is fit over 500 epochs with a batch size of 1.
 
 `Reference:` [Understanding Stateful LSTM Recurrent Neural Networks in Python with Keras](https://machinelearningmastery.com/understanding-stateful-lstm-recurrent-neural-networks-python-keras/)
 
+<br>
+
 <hr>
+
+<br>
 
 ## Tutorial
 
