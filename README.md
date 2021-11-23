@@ -12,11 +12,7 @@ The model is fit over 500 epochs with a batch size of 1.
 
 `Reference:` [Understanding Stateful LSTM Recurrent Neural Networks in Python with Keras](https://machinelearningmastery.com/understanding-stateful-lstm-recurrent-neural-networks-python-keras/)
 
-<br>
-
 <hr>
-
-<br>
 
 ## Tutorial
 
@@ -55,4 +51,14 @@ alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 # Output index and element at the same time {'a','b','c'} -> {0:'a', 1:'b', 2:'c'}
 char_to_int = dict((c, i) for i, c in enumerate(alphabet))  
 int_to_char = dict((i, c) for i, c in enumerate(alphabet))  
+```
+
+查看字串對應之數值
+
+```python
+print(char_to_int)
+
+''' output
+{'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9, 'K': 10, 'L': 11, 'M': 12, 'N': 13, 'O': 14, 'P': 15, 'Q': 16, 'R': 17, 'S': 18, 'T': 19, 'U': 20, 'V': 21, 'W': 22, 'X': 23, 'Y': 24, 'Z': 25}
+'''
 ```
