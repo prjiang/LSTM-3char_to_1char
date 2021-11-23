@@ -53,6 +53,8 @@ char_to_int = dict((c, i) for i, c in enumerate(alphabet))
 int_to_char = dict((i, c) for i, c in enumerate(alphabet))  
 ```
 
+<br>
+
 查看字串對應之數值
 
 ```python
