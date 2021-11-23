@@ -59,7 +59,7 @@ int_to_char = dict((i, c) for i, c in enumerate(alphabet))
 
 <br>
 
-查看字串對應之數值
+查看字串轉換對應之數值
 
 ```python
 print(char_to_int)
