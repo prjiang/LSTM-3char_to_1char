@@ -122,7 +122,7 @@ print('np_utils.to_categorical():\n', y)
 
 <br>
 
-### 模型訓練
+### 模型訓練及預測
 
 建立與訓練模型。
 
@@ -155,4 +155,48 @@ for pattern in dataX:
     result = int_to_char[index]  
     seq_in = [int_to_char[value] for value in pattern]  
     print(seq_in, "->", result) 
+```
+
+隨機選取20項資料進行預測。
+
+```python
+# demonstrate predicting random patterns  
+print("-----Test a Random Pattern:-----")  
+for i in range(0,20):  
+    pattern_index = numpy.random.randint(len(dataX))  
+    pattern = dataX[pattern_index]  
+    x = numpy.reshape(pattern, (1, len(pattern), 1))  
+    xx = x / float(len(alphabet))  
+    prediction = model.predict(x, verbose=0)  
+    index = numpy.argmax(prediction)  
+    result = int_to_char[index]  
+    seq_in = [int_to_char[value] for value in pattern]  
+    print(seq_in, "->", result) 
+```
+
+輸入 A-W 任一字母(大小寫皆可)，以預測其結果。
+
+`upper()` 將輸入之字母字串皆轉換為大寫。
+
+```python
+# demonstrate predicting input patterns
+pattern_input = str(input('輸入英文字母(A-W)：')).upper()
+pattern_index = char_to_int[pattern_input]
+pattern = dataX[pattern_index]
+x = numpy.reshape(pattern, (1, len(pattern), 1))  
+xx = x / float(len(alphabet))  
+prediction = model.predict(x, verbose=0)  
+index = numpy.argmax(prediction)  
+result = int_to_char[index]  
+seq_in = [int_to_char[value] for value in pattern]  
+print(seq_in, "->", result) 
+```
+
+<br>
+
+儲存模型。
+
+```python
+# Save the entire model to a h5 file.
+model.save('./3char_to_1char.h5')
 ```
