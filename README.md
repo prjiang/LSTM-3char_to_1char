@@ -43,9 +43,9 @@ numpy.random.seed(7)
 
 <br>
 
-創建字母資料
+創建字母資料。
 
-建立資料型態轉換之函式
+建立資料型態轉換之函式。
 * 將字串轉為數值
 * 將數值轉為字串
 
@@ -61,7 +61,7 @@ int_to_char = dict((i, c) for i, c in enumerate(alphabet))
 
 <br>
 
-查看字串轉換對應之數值
+查看字串轉換對應之數值。
 
 ```python
 print(char_to_int)
@@ -95,7 +95,7 @@ for i in range(0, len(alphabet) - seq_length, 1):
 
 `np_utils.to_categorical()` 將類別向量轉換為二進位的矩陣類型表示。
 
-> [0, 1, 2] -> [[1. 0. 0.] [0. 1. 0.] [0. 0. 1.]]
+> e.g. [0, 1, 2] -> [[1. 0. 0.] [0. 1. 0.] [0. 0. 1.]]
 
 ```python
 # reshape X to be [samples, time steps, features]  
@@ -122,9 +122,9 @@ print('np_utils.to_categorical():\n', y)
 
 <br>
 
-### 訓練模型
+### 模型訓練
 
-建立與訓練模型
+建立與訓練模型。
 
 ```python
 # create and fit the model  
@@ -133,4 +133,26 @@ model.add(LSTM(32, input_shape=(X.shape[1], X.shape[2])))
 model.add(Dense(y.shape[1], activation='softmax'))  
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])  
 model.fit(X, y, epochs=500, batch_size=1, verbose=2)  
+```
+
+<br>
+
+查看模型準確率。
+
+顯示所有輸入資料之預測結果。
+
+```python
+# summarize performance of the model  
+scores = model.evaluate(X, y, verbose=0)  
+print("-----Model Accuracy: %.2f%%-----" % (scores[1]*100))
+
+# demonstrate some model predictions  
+for pattern in dataX:  
+    x = numpy.reshape(pattern, (1, len(pattern), 1))  
+    xx = x / float(len(alphabet))  
+    prediction = model.predict(x, verbose=0)  
+    index = numpy.argmax(prediction)  
+    result = int_to_char[index]  
+    seq_in = [int_to_char[value] for value in pattern]  
+    print(seq_in, "->", result) 
 ```
